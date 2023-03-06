@@ -26,7 +26,7 @@ def directoryNavigator(directory):
 # la cui chiave univoca è il percorso completo del file.
 def calculateFile(subpath, filepath, files):
     for filename in files:
-        # controlla che sia un eseguibile .py o .sh. La scelta è stata fatta ipotizzando che questi siano il tipo
+        # controlla che sia un eseguibile .py. La scelta è stata fatta ipotizzando che quest sia il tipo
         # di file che ci interessa analizzare in modo da velociazzare la ricerca.
         if not (filename.endswith('.py')):
                 continue
@@ -41,8 +41,8 @@ def calculateFile(subpath, filepath, files):
 
 # funzione main
 if __name__ == '__main__':
-    #topLevelDirectory = sys.argv[1]
-    directoryNavigator('C:/Users/User/Desktop/programmazione')
+    topLevelDirectory = sys.argv[1]
+    directoryNavigator(topLevelDirectory)
     # stampa a schermo il dizionario chiave-valori dopo l'analisi
     for shebang, count in shebangSet.items():
         print(f'"{shebang.strip()}": {count} file(s)')
