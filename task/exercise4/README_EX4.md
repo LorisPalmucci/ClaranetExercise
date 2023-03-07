@@ -8,60 +8,60 @@
    Del deploy se ne occupa Claranet, che incarica i suoi Flower di scegliere i tool e dare vita al sito.
 
 ### Quali tool sono stati scelti e perché:
-      - Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
-        -- Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
-          cloud e dispositivi di rete
+- Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
+  -- Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
+    cloud e dispositivi di rete
 
-      - Per il setup dell'applicazione invece si è scelto di usare Docker:
-        -- Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
-          di lavoro garantendo sicurezza e affidabilità, a basso impatto sulle prestazione della macchina ed efficiente nella
-          distribuzione e gestione dell'applicazione
+- Per il setup dell'applicazione invece si è scelto di usare Docker:
+  -- Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
+    di lavoro garantendo sicurezza e affidabilità, a basso impatto sulle prestazione della macchina ed efficiente nella
+    distribuzione e gestione dell'applicazione
 
-      - Come server Web si è scelto di usare Nginx:
-        -- Essendo un sito a scopo prettamente informativo Nginx si dimostra all'altezza nel gestire un gran numero di richieste 
-          da parte dei client, grazie alla sua capacità di Reverse Proxy è protetto da attacchi informatici garantendo sicurezza
-          al sito, inoltre è facile da configurare
+- Come server Web si è scelto di usare Nginx:
+  -- Essendo un sito a scopo prettamente informativo Nginx si dimostra all'altezza nel gestire un gran numero di richieste 
+    da parte dei client, grazie alla sua capacità di Reverse Proxy è protetto da attacchi informatici garantendo sicurezza
+    al sito, inoltre è facile da configurare
 
-          Nel caso in cui divenisse neccessaria l'acquisizione di dati personali di utenti, sposterei la mia scelta su Apache,
-          che garantisce stabilità e protezione avantate di autenticazione ecrittografia oltre ad avere una nutrita comunity di
-          supporto
+    Nel caso in cui divenisse neccessaria l'acquisizione di dati personali di utenti, sposterei la mia scelta su Apache,
+    che garantisce stabilità e protezione avantate di autenticazione ecrittografia oltre ad avere una nutrita comunity di
+    supporto
 
-      - Per creare l'infrastruttura si è scelto di usare CloudFormation visto che il sito sarà messo su un Cloud AWS:
-        -- Facilità di gestione delle delle risorse dello stack AWS che consente di modificarle, aggiornarle o eliminarle
-          quando necessario, sicurezza grazie alle autorizzazioni di accesso alle risorse, rollback in caso di problemi grazie
-          alla gestione di più versioni delle definizioni dello stack, possibilità di riprodurre l'infrastruttura su più
-          account AWS
+- Per creare l'infrastruttura si è scelto di usare CloudFormation visto che il sito sarà messo su un Cloud AWS:
+  -- Facilità di gestione delle delle risorse dello stack AWS che consente di modificarle, aggiornarle o eliminarle
+    quando necessario, sicurezza grazie alle autorizzazioni di accesso alle risorse, rollback in caso di problemi grazie
+    alla gestione di più versioni delle definizioni dello stack, possibilità di riprodurre l'infrastruttura su più
+    account AWS
 
-CLOUDFORMATION
-  Grazie alla possibilità di eseguire la propria infrastruttura come codice, è possibile descrivere le risorse che si intende
-  creare con le loro porpietà in un file YAML.
-  Come primo passo verrà istanziato un ambiente sul cloud AWS in particolare potremmo definire un'istanza per Docker in 
-  modo che venga eseguito uno script che lo installi nello stac EC2:
+## CLOUDFORMATION
+    Grazie alla possibilità di eseguire la propria infrastruttura come codice, è possibile descrivere le risorse che si intende
+    creare con le loro porpietà in un file YAML.
+    Come primo passo verrà istanziato un ambiente sul cloud AWS in particolare potremmo definire un'istanza per Docker in 
+    modo che venga eseguito uno script che lo installi nello stac EC2:
 
-      #
-        configurazione stack EC2
-      #
+        #
+          configurazione stack EC2
+        #
 
-        # Definizione della risorsa
-      Risorsa Docker:
-        Type: AWS::EC2::Instance
-        Properties:
-          ImageId: tipo di AMI che si vuole usare come base
-          InstanceType: tipo di istanza da inizializzare
-          KeyName: chiave SSH
-          SecurityGroupIds:
-            - sg-1234567890abcdef
+          # Definizione della risorsa
+        Risorsa Docker:
+          Type: AWS::EC2::Instance
+          Properties:
+            ImageId: tipo di AMI che si vuole usare come base
+            InstanceType: tipo di istanza da inizializzare
+            KeyName: chiave SSH
+            SecurityGroupIds:
+              - sg-1234567890abcdef
 
-          UserData:
-            Fn::Base64: !Sub |
-              #!/bin/bash
-              apt-get update
-              apt-get install -y docker.io
-              docker run -d -p 80:80 --name my_nginx nginx
+            UserData:
+              Fn::Base64: !Sub |
+                #!/bin/bash
+                apt-get update
+                apt-get install -y docker.io
+                docker run -d -p 80:80 --name my_nginx nginx
 
-  dove in UserData specificheremo di eseguire lo script o comandi da per configurare Docker.
-  Inoltre nel container di Docker si è deciso di istanziare anche il server Web Nginx, in modo tale che nella stessa macchina
-  si possano avere server Web diversi (Apache ad esempio) containerizzati in altre applicazioni.
+    dove in UserData specificheremo di eseguire lo script o comandi da per configurare Docker.
+    Inoltre nel container di Docker si è deciso di istanziare anche il server Web Nginx, in modo tale che nella stessa macchina
+    si possano avere server Web diversi (Apache ad esempio) containerizzati in altre applicazioni.
 
 ANSIBLE
   Grazie ad Ansible possiamo gestire la creazione dell'infrastruttura su un Cloud AWS.
