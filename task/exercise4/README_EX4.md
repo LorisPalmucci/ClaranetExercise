@@ -1,12 +1,8 @@
-
-#INTRODUZIONE
-
-#Scenario:
-##Dopo la scoperta del Covid che ha interessato l'intero globo e dopo aver fatto fronte alla prima emergenza sanitaria, 
-
 INTRODUZIONE
+
 Scenario:
   Dopo la scoperta del Covid che ha interessato l'intero globo e dopo aver fatto fronte alla prima emergenza sanitaria, 
+
   il governo Italiano ha deciso di mettere in piedi un sito in cui i cittadini possano informarsi su norme comportamentali
   sull'andamento della pandemia nella nazione, in quali comuni e regioni entrano in vigore le norme di contenimento e molte
   altri informazioni a riguardo.
