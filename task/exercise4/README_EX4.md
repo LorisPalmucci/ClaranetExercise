@@ -121,20 +121,20 @@ svariati container nella stessa macchina.
 POST-DEPLOY
 Una volta deployata l'applicazione dovrebbe essere:
 1. Sicura:
-  - uso di HTTPS per la comunicazione 
-  - crittografia di dati sensibili
-  - uso di firewall per limitare l'accesso ai servizi e alle porte
+    - uso di HTTPS per la comunicazione 
+    - crittografia di dati sensibili
+    - uso di firewall per limitare l'accesso ai servizi e alle porte
 
 2. Veloce:
-  - utilizzo di cache
-  - usare tecniche per distribuire il traffico su più server
+    - utilizzo di cache
+    - usare tecniche per distribuire il traffico su più server
 
 3. Tollerante ai Guasti:
-  - usare un approccio a sistemi distribuiti
+    - usare un approccio a sistemi distribuiti
 
 4. Adattabilità al carico Medio
-  - auto-scaling per adattare le risorse in base al traffico
-  - utilizzo di cache
+    - auto-scaling per adattare le risorse in base al traffico
+    - utilizzo di cache
 
 ## CONCLUSIONI
 Per deployare un sito per prima cosa andremo ad analizzare le possibilità di richieste ed il tipo di contenuti in modo da
