@@ -1,38 +1,36 @@
-#INTRODUZIONE
+# INTRODUZIONE
 
-##Scenario:
-  #Dopo la scoperta del Covid che ha interessato l'intero globo e dopo aver fatto fronte alla prima emergenza sanitaria, 
+## Scenario:
+   Dopo la scoperta del Covid che ha interessato l'intero globo e dopo aver fatto fronte alla prima emergenza sanitaria, 
+   il governo Italiano ha deciso di mettere in piedi un sito in cui i cittadini possano informarsi su norme comportamentali
+   sull'andamento della pandemia nella nazione, in quali comuni e regioni entrano in vigore le norme di contenimento e molte
+   altri informazioni a riguardo.
+   Del deploy se ne occupa Claranet, che incarica i suoi Flower di scegliere i tool e dare vita al sito.
 
-  il governo Italiano ha deciso di mettere in piedi un sito in cui i cittadini possano informarsi su norme comportamentali
-  sull'andamento della pandemia nella nazione, in quali comuni e regioni entrano in vigore le norme di contenimento e molte
-  altri informazioni a riguardo.
+### Quali tool sono stati scelti e perché:
+      - Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
+        -- Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
+          cloud e dispositivi di rete
 
-  Del deploy se ne occupa Claranet, che incarica i suoi Flower di scegliere i tool e dare vita al sito.
+      - Per il setup dell'applicazione invece si è scelto di usare Docker:
+        -- Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
+          di lavoro garantendo sicurezza e affidabilità, a basso impatto sulle prestazione della macchina ed efficiente nella
+          distribuzione e gestione dell'applicazione
 
-  Quali tool sono stati scelti e perché:
-    - Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
-      -- Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
-         cloud e dispositivi di rete
+      - Come server Web si è scelto di usare Nginx:
+        -- Essendo un sito a scopo prettamente informativo Nginx si dimostra all'altezza nel gestire un gran numero di richieste 
+          da parte dei client, grazie alla sua capacità di Reverse Proxy è protetto da attacchi informatici garantendo sicurezza
+          al sito, inoltre è facile da configurare
 
-    - Per il setup dell'applicazione invece si è scelto di usare Docker:
-      -- Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
-         di lavoro garantendo sicurezza e affidabilità, a basso impatto sulle prestazione della macchina ed efficiente nella
-         distribuzione e gestione dell'applicazione
+          Nel caso in cui divenisse neccessaria l'acquisizione di dati personali di utenti, sposterei la mia scelta su Apache,
+          che garantisce stabilità e protezione avantate di autenticazione ecrittografia oltre ad avere una nutrita comunity di
+          supporto
 
-    - Come server Web si è scelto di usare Nginx:
-      -- Essendo un sito a scopo prettamente informativo Nginx si dimostra all'altezza nel gestire un gran numero di richieste 
-         da parte dei client, grazie alla sua capacità di Reverse Proxy è protetto da attacchi informatici garantendo sicurezza
-         al sito, inoltre è facile da configurare
-
-         Nel caso in cui divenisse neccessaria l'acquisizione di dati personali di utenti, sposterei la mia scelta su Apache,
-         che garantisce stabilità e protezione avantate di autenticazione ecrittografia oltre ad avere una nutrita comunity di
-         supporto
-
-    - Per creare l'infrastruttura si è scelto di usare CloudFormation visto che il sito sarà messo su un Cloud AWS:
-      -- Facilità di gestione delle delle risorse dello stack AWS che consente di modificarle, aggiornarle o eliminarle
-         quando necessario, sicurezza grazie alle autorizzazioni di accesso alle risorse, rollback in caso di problemi grazie
-         alla gestione di più versioni delle definizioni dello stack, possibilità di riprodurre l'infrastruttura su più
-         account AWS
+      - Per creare l'infrastruttura si è scelto di usare CloudFormation visto che il sito sarà messo su un Cloud AWS:
+        -- Facilità di gestione delle delle risorse dello stack AWS che consente di modificarle, aggiornarle o eliminarle
+          quando necessario, sicurezza grazie alle autorizzazioni di accesso alle risorse, rollback in caso di problemi grazie
+          alla gestione di più versioni delle definizioni dello stack, possibilità di riprodurre l'infrastruttura su più
+          account AWS
 
 CLOUDFORMATION
   Grazie alla possibilità di eseguire la propria infrastruttura come codice, è possibile descrivere le risorse che si intende
