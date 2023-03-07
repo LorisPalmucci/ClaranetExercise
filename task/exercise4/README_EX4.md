@@ -37,7 +37,7 @@ Grazie alla possibilità di eseguire la propria infrastruttura come codice, è p
 creare con le loro porpietà in un file YAML.
 Come primo passo verrà istanziato un ambiente sul cloud AWS in particolare potremmo definire un'istanza per Docker in 
 modo che venga eseguito uno script che lo installi nello stac EC2:
-
+  > yaml
     #
       configurazione stack EC2
     #
