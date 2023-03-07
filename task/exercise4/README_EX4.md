@@ -9,11 +9,11 @@
 
 ### Quali tool sono stati scelti e perché:
 - Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
-  -- Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
+  - Ansible permette di gestire un grande numero di server e può essere usato su svariati dispositivi fisici o virtuali,
     cloud e dispositivi di rete
 
 - Per il setup dell'applicazione invece si è scelto di usare Docker:
-  -- Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
+  - Permette di usare immagini di applicazioni indipendentemente dal sistema operativo sottostante, isola i vari ambienti
     di lavoro garantendo sicurezza e affidabilità, a basso impatto sulle prestazione della macchina ed efficiente nella
     distribuzione e gestione dell'applicazione
 
