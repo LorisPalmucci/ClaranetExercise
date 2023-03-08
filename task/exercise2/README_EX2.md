@@ -1,6 +1,10 @@
 # Shebang-Counter Script
 
-Questo script Python o Bash conta il numero di file script presenti in una directory e li suddivide in base all'interprete Shebang specificato all'inizio di ciascun file. L'interprete Shebang è la riga di commento che indica quale interprete di comandi deve essere utilizzato per eseguire lo script.
+Questo script Python conta il numero di file script presenti in una directory e relative sottodirectory e li suddivide in base all'interprete Shebang specificato all'inizio di ciascun file. L'interprete Shebang è la riga di commento che indica quale interprete di comandi deve essere utilizzato per eseguire lo script.
+
+Questo script prende in ingresso un solo parametro:
+
+- il percorso di una directory
 
 ## Installazione
 Per utilizzare lo script, assicurarsi di avere Python installato sul proprio sistema. Quindi, scaricare il file dello script e salvarlo in una posizione a scelta.
