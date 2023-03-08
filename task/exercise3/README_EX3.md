@@ -1,4 +1,4 @@
-# Backup Directory
+# Cron String
 
 Questo progetto riguarda la creazione di un backup della directory utente che andrà poi inviata su un server remoto, utilizzando il comando cron e il protocollo SSH.
 

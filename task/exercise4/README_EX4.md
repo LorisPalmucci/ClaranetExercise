@@ -5,7 +5,7 @@
    il governo Italiano ha deciso di mettere in piedi un sito in cui i cittadini possano informarsi su norme comportamentali
    sull'andamento della pandemia nella nazione, in quali comuni e regioni entrano in vigore le norme di contenimento e molte
    altri informazioni a riguardo.
-   Del deploy se ne occupa Claranet, che incarica i suoi Flower di scegliere i tool e dare vita al sito.
+   Del deploy se ne occupa Claranet, che incarica i suoi Sailor di scegliere i tool e dare vita al sito.
 
 ### Quali tool sono stati scelti e perché:
 - Per l'automatizzazione dell'infrastruttura si è scelto di usare Ansible:
