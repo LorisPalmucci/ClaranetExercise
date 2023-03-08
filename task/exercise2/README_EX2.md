@@ -12,8 +12,6 @@ Per utilizzare lo script, assicurarsi di avere Python installato sul proprio sis
 ## Utilizzo
 Per eseguire lo script, aprire un terminale e navigare nella directory in cui è salvato lo script. Quindi, utilizzare il seguente comando:
 
-Per utilizzare la versione Python dello script, esegui il seguente comando:
-
 > python ex1.py [nome_directory]
 
 Sostituire [nome_directory] con il nome della directory che si desidera controllare.
